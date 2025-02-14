@@ -1,0 +1,276 @@
+{
+  "contacts": [
+    {
+      "id": 1,
+      "firstName": "John",
+      "lastName": "Balingit",
+      "role": "Manager",
+      "image": "1",
+      "contactType": "Contractor",
+      "address": "Flat 1, Halapid 12, Petah Tikva",
+      "mainContact": true,
+      "contactDetails": {
+        "preferredLanguage": "Hebrew",
+        "phoneNumbers": [
+          {
+            "number": "052-54654614",
+            "type": "Work"
+          }
+        ],
+        "emails": [
+          {
+            "email": "john.balingit@ifd.co.il",
+            "type": "Private"
+          }
+        ]
+      },
+      "mailingAddress": "Halapid 9",
+      "billingInformation": {
+        "nameForInvoice": "Halapid 9",
+        "accountingRef": "88888",
+        "VATNumber": "587974"
+      }
+    },
+    {
+      "id": 2,
+      "firstName": "Michael",
+      "lastName": "Cohen",
+      "role": "Senior Engineer",
+      "image": "2",
+      "contactType": "Freelancer",
+      "address": "Flat 3, HaShalom 45, Tel Aviv",
+      "mainContact": false,
+      "contactDetails": {
+        "preferredLanguage": "English",
+        "phoneNumbers": [
+          {
+            "number": "054-7896543",
+            "type": "Work"
+          }
+        ],
+        "emails": [
+          {
+            "email": "michael.cohen@engineer.com",
+            "type": "Work"
+          }
+        ]
+      },
+      "mailingAddress": "",
+      "billingInformation": ""
+    },
+    {
+      "id": 3,
+      "firstName": "Yoel",
+      "lastName": "Levi",
+      "role": "Project Manager",
+      "image": "3",
+      "contactType": "Employee",
+      "address": "Floor 2, King George 10, Tel Aviv",
+      "mainContact": false,
+      "contactDetails": {
+        "preferredLanguage": "Hebrew",
+        "phoneNumbers": [
+          {
+            "number": "052-1234567",
+            "type": "Work"
+          }
+        ],
+        "emails": [
+          {
+            "email": "sarah.levi@company.com",
+            "type": "Work"
+          }
+        ]
+      },
+      "mailingAddress": "",
+      "billingInformation": ""
+    },
+    {
+      "id": 4,
+      "firstName": "Liat",
+      "lastName": "Rosen",
+      "role": "Marketing Director",
+      "image": "",
+      "contactType": "Employee",
+      "address": "Jaffa 15, Tel Aviv",
+      "mainContact": false,
+      "contactDetails": {
+        "preferredLanguage": "English",
+        "phoneNumbers": [
+          {
+            "number": "054-4567890",
+            "type": "Work"
+          }
+        ],
+        "emails": [
+          {
+            "email": "david.rosen@company.com",
+            "type": "Work"
+          }
+        ]
+      },
+      "mailingAddress": "",
+      "billingInformation": ""
+    },
+    {
+      "id": 5,
+      "firstName": "Liron",
+      "lastName": "Shalom",
+      "role": "Software Developer",
+      "image": "5",
+      "contactType": "Employee",
+      "address": "Herzl 24, Haifa",
+      "mainContact": false,
+      "contactDetails": {
+        "preferredLanguage": "Hebrew",
+        "phoneNumbers": [
+          {
+            "number": "054-5555555",
+            "type": "Work"
+          }
+        ],
+        "emails": [
+          {
+            "email": "liat.shalom@company.com",
+            "type": "Work"
+          }
+        ]
+      },
+      "mailingAddress": "",
+      "billingInformation": ""
+    },
+    {
+      "id": 6,
+      "firstName": "Oren",
+      "lastName": "Katz",
+      "role": "UX Designer",
+      "image": "6",
+      "contactType": "Freelancer",
+      "address": "Ben Gurion 30, Tel Aviv",
+      "mainContact": false,
+      "contactDetails": {
+        "preferredLanguage": "English",
+        "phoneNumbers": [
+          {
+            "number": "052-2223333",
+            "type": "Work"
+          }
+        ],
+        "emails": [
+          {
+            "email": "oren.katz@uxdesigner.com",
+            "type": "Work"
+          }
+        ]
+      },
+      "mailingAddress": "",
+      "billingInformation": ""
+    },
+    {
+      "id": 7,
+      "firstName": "Yaara",
+      "lastName": "Amit",
+      "role": "HR Manager",
+      "contactType": "Employee",
+      "address": "Shalom 42, Tel Aviv",
+      "mainContact": false,
+      "contactDetails": {
+        "preferredLanguage": "Hebrew",
+        "phoneNumbers": [
+          {
+            "number": "050-7891234",
+            "type": "Work"
+          }
+        ],
+        "emails": [
+          {
+            "email": "yaara.amit@company.com",
+            "type": "Work"
+          }
+        ]
+      },
+      "mailingAddress": "",
+      "billingInformation": ""
+    },
+    {
+      "id": 8,
+      "firstName": "Tomer",
+      "lastName": "Ben David",
+      "role": "Sales Manager",
+      "image": "8",
+      "contactType": "Employee",
+      "address": "HaNeviim 19, Tel Aviv",
+      "mainContact": true,
+      "contactDetails": {
+        "preferredLanguage": "English",
+        "phoneNumbers": [
+          {
+            "number": "054-3216548",
+            "type": "Work"
+          }
+        ],
+        "emails": [
+          {
+            "email": "tomer.bendavid@company.com",
+            "type": "Work"
+          }
+        ]
+      },
+      "mailingAddress": "",
+      "billingInformation": ""
+    },
+    {
+      "id": 9,
+      "firstName": "Tali",
+      "lastName": "Goldstein",
+      "role": "Operations Manager",
+      "contactType": "Employee",
+      "address": "Dizengoff 72, Tel Aviv",
+      "mainContact": true,
+      "contactDetails": {
+        "preferredLanguage": "Hebrew",
+        "phoneNumbers": [
+          {
+            "number": "052-6549873",
+            "type": "Work"
+          }
+        ],
+        "emails": [
+          {
+            "email": "tali.goldstein@company.com",
+            "type": "Work"
+          }
+        ]
+      },
+      "mailingAddress": "",
+      "billingInformation": ""
+    },
+    {
+      "id": 10,
+      "firstName": "Eli",
+      "lastName": "Barak",
+      "role": "IT Specialist",
+      "image": "10",
+      "contactType": "Contractor",
+      "address": "Rothschild 100, Tel Aviv",
+      "mainContact": false,
+      "contactDetails": {
+        "preferredLanguage": "English",
+        "phoneNumbers": [
+          {
+            "number": "054-7778889",
+            "type": "Work"
+          }
+        ],
+        "emails": [
+          {
+            "email": "eli.barak@tech.com",
+            "type": "Work"
+          }
+        ]
+      },
+      "mailingAddress": "",
+      "billingInformation": ""
+    }
+  ]
+}
