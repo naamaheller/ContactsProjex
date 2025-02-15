@@ -70,7 +70,7 @@
       "image": "3",
       "contactType": "Employee",
       "address": "Floor 2, King George 10, Tel Aviv",
-      "mainContact": false,
+      "mainContact": true,
       "contactDetails": {
         "preferredLanguage": "Hebrew",
         "phoneNumbers": [
@@ -193,7 +193,7 @@
       "role": "HR Manager",
       "contactType": "Employee",
       "address": "Shalom 42, Tel Aviv",
-      "mainContact": false,
+      "mainContact": true,
       "contactDetails": {
         "preferredLanguage": "Hebrew",
         "phoneNumbers": [

@@ -23,7 +23,7 @@ const ContactView = ({ open, onClose }) => {
     if (!contact) return null;
 
     return (
-        <Drawer anchor="right" open={open} onClose={onClose} PaperProps={{ sx: { width: "360px", padding: "30px", backgroundColor: "#f8f9fb" } }}>
+        <Drawer anchor="right" open={open} onClose={onClose} PaperProps={{ sx: { width: "360px", padding: "30px", backgroundColor: "#f8f9fb",color:"#1f3b57" } }}>
             <Box display="flex" justifyContent="space-between" alignItems="center">
                 <Typography variant="h6" fontWeight="bold" fontSize={"1rem"}>Contact Details</Typography>
                 <IconButton onClick={onClose}><CloseIcon /></IconButton>
