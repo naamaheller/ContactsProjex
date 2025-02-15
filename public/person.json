@@ -26,8 +26,8 @@
       },
       "mailingAddress": "Halapid 9",
       "billingInformation": {
-        "nameForInvoice": "Halapid 9",
-        "accountingRef": "88888",
+        "nameForInvoice": "John Balingit Ltd.",
+        "accountingRef": "JBL12345",
         "VATNumber": "587974"
       }
     },
@@ -55,8 +55,12 @@
           }
         ]
       },
-      "mailingAddress": "",
-      "billingInformation": ""
+      "mailingAddress": "HaShalom 45",
+      "billingInformation": {
+        "nameForInvoice": "Cohen Engineering",
+        "accountingRef": "COH54321",
+        "VATNumber": "123456"
+      }
     },
     {
       "id": 3,
@@ -82,8 +86,12 @@
           }
         ]
       },
-      "mailingAddress": "",
-      "billingInformation": ""
+      "mailingAddress": "King George 10",
+      "billingInformation": {
+        "nameForInvoice": "Yoel Levi Projects",
+        "accountingRef": "LEV23456",
+        "VATNumber": "654321"
+      }
     },
     {
       "id": 4,
@@ -109,8 +117,12 @@
           }
         ]
       },
-      "mailingAddress": "",
-      "billingInformation": ""
+      "mailingAddress": "Jaffa 15",
+      "billingInformation": {
+        "nameForInvoice": "Rosen Marketing",
+        "accountingRef": "ROS34567",
+        "VATNumber": "789012"
+      }
     },
     {
       "id": 5,
@@ -136,8 +148,12 @@
           }
         ]
       },
-      "mailingAddress": "",
-      "billingInformation": ""
+      "mailingAddress": "Herzl 24",
+      "billingInformation": {
+        "nameForInvoice": "Shalom Tech Solutions",
+        "accountingRef": "SHA56789",
+        "VATNumber": "890123"
+      }
     },
     {
       "id": 6,
@@ -163,8 +179,12 @@
           }
         ]
       },
-      "mailingAddress": "",
-      "billingInformation": ""
+      "mailingAddress": "Ben Gurion 35",
+      "billingInformation": {
+        "nameForInvoice": "Katz UX",
+        "accountingRef": "33445",
+        "VATNumber": "778899"
+      }
     },
     {
       "id": 7,
@@ -189,8 +209,12 @@
           }
         ]
       },
-      "mailingAddress": "",
-      "billingInformation": ""
+      "mailingAddress": "Shalom 50",
+      "billingInformation": {
+        "nameForInvoice": "Amit HR",
+        "accountingRef": "44556",
+        "VATNumber": "990011"
+      }
     },
     {
       "id": 8,
@@ -216,8 +240,12 @@
           }
         ]
       },
-      "mailingAddress": "",
-      "billingInformation": ""
+      "mailingAddress": "HaNeviim 25",
+      "billingInformation": {
+        "nameForInvoice": "Ben David Sales",
+        "accountingRef": "55667",
+        "VATNumber": "112244"
+      }
     },
     {
       "id": 9,
@@ -242,8 +270,12 @@
           }
         ]
       },
-      "mailingAddress": "",
-      "billingInformation": ""
+      "mailingAddress": "Dizengoff 80",
+      "billingInformation": {
+        "nameForInvoice": "Goldstein Operations",
+        "accountingRef": "66778",
+        "VATNumber": "223355"
+      }
     },
     {
       "id": 10,
@@ -269,8 +301,12 @@
           }
         ]
       },
-      "mailingAddress": "",
-      "billingInformation": ""
+      "mailingAddress": "Rothschild 110",
+      "billingInformation": {
+        "nameForInvoice": "Barak IT Services",
+        "accountingRef": "77889",
+        "VATNumber": "334466"
+      }
     }
   ]
 }

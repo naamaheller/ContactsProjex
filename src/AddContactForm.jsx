@@ -14,19 +14,20 @@ import {
   AccordionSummary,
   AccordionDetails,
   Typography,
+  Grid,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CloseIcon from "@mui/icons-material/Close";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import ReactCountryFlag from "react-country-flag";
 
-const languages = [
-  { code: "en", name: "English", flag: "🇬🇧" },
-  { code: "he", name: "Hebrew", flag: "🇮🇱" },
-  { code: "fr", name: "French", flag: "🇫🇷" },
-  { code: "es", name: "Spanish", flag: "🇪🇸" },
-  { code: "de", name: "German", flag: "🇩🇪" },
+const languageOptions = [
+  { value: "hebrew", label: "Hebrew", flag: "IL" },
+  { value: "english", label: "English", flag: "US" },
+  { value: "spanish", label: "Spanish", flag: "ES" },
+  { value: "french", label: "French", flag: "FR" },
 ];
 
 const AddContactForm = ({ open, onClose }) => {
@@ -42,8 +43,10 @@ const AddContactForm = ({ open, onClose }) => {
     },
   });
 
-  const { fields: phoneFields, append: addPhone, remove: removePhone } = useFieldArray({ control, name: "phones" });
-  const { fields: emailFields, append: addEmail, remove: removeEmail } = useFieldArray({ control, name: "emails" });
+  const { fields: phoneFields, append: addPhone, remove: removePhone } =
+    useFieldArray({ control, name: "phones" });
+  const { fields: emailFields, append: addEmail, remove: removeEmail } =
+    useFieldArray({ control, name: "emails" });
   const [profileImage, setProfileImage] = useState(null);
 
   const handleImageUpload = (e) => {
@@ -65,18 +68,29 @@ const AddContactForm = ({ open, onClose }) => {
   };
 
   return (
-    <Drawer anchor="right" open={open} onClose={handleClose} PaperProps={{ sx: { width: "400px", padding: "20px", height: "700px" } }}>
+    <Drawer
+      anchor="right"
+      open={open}
+      onClose={handleClose}
+      PaperProps={{ sx: { width: "400px", padding: "20px", height: "700px" } }}
+    >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <h2>New Contact</h2>
-        <IconButton onClick={handleClose}><CloseIcon /></IconButton>
+        <IconButton onClick={handleClose}>
+          <CloseIcon />
+        </IconButton>
       </div>
-      
+
       <div style={{ textAlign: "center", marginBottom: "15px", position: "relative" }}>
         <input type="file" accept="image/*" onChange={handleImageUpload} style={{ display: "none" }} id="profile-upload" />
         <label htmlFor="profile-upload">
           <Avatar src={profileImage} sx={{ width: 80, height: 80, margin: "auto", cursor: "pointer" }} />
         </label>
-        <IconButton component="label" htmlFor="profile-upload" sx={{ position: "absolute", left: "60%", bottom: 0, transform: "translateX(-50%)", background: "#fff" }}>
+        <IconButton
+          component="label"
+          htmlFor="profile-upload"
+          sx={{ position: "absolute", left: "60%", bottom: 0, transform: "translateX(-50%)", background: "#fff" }}
+        >
           <EditIcon />
         </IconButton>
       </div>
@@ -99,19 +113,26 @@ const AddContactForm = ({ open, onClose }) => {
 
         <Accordion defaultExpanded>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography variant="subtitle1" sx={{ fontSize: "14px", marginBottom: "10px"}}>Contact Details</Typography>
+            <Typography variant="subtitle1" sx={{ fontSize: "14px", marginBottom: "10px" }}>Contact Details</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <FormControl fullWidth sx={{ marginBottom: "10px" }}>
-              <InputLabel shrink>Preferred Language</InputLabel>
-              <Controller name="language" control={control} render={({ field }) => (
-                <Select {...field} displayEmpty>
-                  {languages.map((lang) => (
-                    <MenuItem key={lang.code} value={lang.code}>{lang.flag} {lang.name}</MenuItem>
-                  ))}
-                </Select>
-              )} />
-            </FormControl>
+            <Grid item xs={12}>
+              <label htmlFor="preferredLanguage">Preferred Language</label>
+              <Controller
+                name="language"
+                control={control}
+                render={({ field }) => (
+                  <Select {...field} fullWidth displayEmpty>
+                    {languageOptions.map((option) => (
+                      <MenuItem key={option.value} value={option.value}>
+                        <ReactCountryFlag countryCode={option.flag} svg style={{ marginRight: 5 }} />
+                        {option.label}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                )}
+              />
+            </Grid>
 
             <h4>Phone</h4>
             {phoneFields.map((item, index) => (
@@ -144,6 +165,7 @@ const AddContactForm = ({ open, onClose }) => {
             <Button onClick={() => addEmail({ email: "", type: "" })} startIcon={<AddIcon />}>Add Email</Button>
           </AccordionDetails>
         </Accordion>
+
         <div style={{ display: "flex", justifyContent: "space-between", marginTop: "20px" }}>
           <Button onClick={handleClose} variant="outlined">Cancel</Button>
           <Button type="submit" variant="contained" color="primary">Save Contact</Button>
