@@ -35,7 +35,7 @@ const ContactView = ({ open, onClose }) => {
                     onError={(e) => e.target.src = "/img/default.jpg"}
                     sx={{ width: 70, height: 70, margin: "auto" }}
                 />
-                <IconButton size="small" sx={{ position: "absolute", top: 0, right: 0, color: "#007bff" }}>
+                <IconButton size="small" sx={{ position: "absolute", top: 0, right: 0, color: "#1f3b57" }}>
                     <EditIcon fontSize="small" /> <Typography variant="body2">Edit</Typography>
                 </IconButton>
                 <Typography fontSize={"0.9rem"} fontWeight="bold">{contact.firstName} {contact.lastName}</Typography>

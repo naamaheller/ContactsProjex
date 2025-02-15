@@ -31,7 +31,7 @@ const languageOptions = [
 ];
 
 const AddContactForm = ({ open, onClose }) => {
-    const { control, handleSubmit, reset } = useForm({
+    const { control, handleSubmit, reset, formState: { errors } } = useForm({
         defaultValues: {
             firstName: "",
             lastName: "",
@@ -112,11 +112,13 @@ const AddContactForm = ({ open, onClose }) => {
     <Controller 
         name="firstName" 
         control={control} 
+        rules={{ required: "First name is required" }}
         render={({ field }) => (
             <TextField 
                 {...field} 
                 label="First Name" 
-                fullWidth 
+                fullWidth
+                error={!!errors.firstName} helperText={errors.firstName?.message} 
                 sx={{ 
                     backgroundColor: "#F5F8FA", 
                     "& .MuiOutlinedInput-root": { 
@@ -135,11 +137,13 @@ const AddContactForm = ({ open, onClose }) => {
     <Controller 
         name="lastName" 
         control={control} 
+        rules={{ required: "Last name is required" }}
         render={({ field }) => (
             <TextField 
                 {...field} 
                 label="Last Name" 
-                fullWidth 
+                fullWidth
+                error={!!errors.lastName} helperText={errors.lastName?.message}  
                 sx={{ 
                     backgroundColor: "#F5F8FA", 
                     "& .MuiOutlinedInput-root": { 
@@ -251,11 +255,13 @@ const AddContactForm = ({ open, onClose }) => {
                 <Controller
                     name={`phones.${index}.number`}
                     control={control}
+                    rules={{ required: "Phone number is required", pattern: { value: /^[0-9]{7,15}$/, message: "Invalid phone number" } }}
                     render={({ field }) => (
                         <TextField
                             {...field}
                             label="Phone"
                             fullWidth
+                            error={!!errors.phones?.[0]?.number} helperText={errors.phones?.[0]?.number?.message}
                             sx={{
                                 backgroundColor: "#F5F8FA",
                                 "& .MuiOutlinedInput-root": {
@@ -306,11 +312,13 @@ const AddContactForm = ({ open, onClose }) => {
                 <Controller
                     name={`emails.${index}.email`}
                     control={control}
+                    rules={{ required: "Email is required", pattern: { value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, message: "Invalid email address" } }}
                     render={({ field }) => (
                         <TextField
                             {...field}
                             label="Email"
                             fullWidth
+                            error={!!errors.emails?.[0]?.email} helperText={errors.emails?.[0]?.email?.message}
                             sx={{
                                 backgroundColor: "#F5F8FA",
                                 "& .MuiOutlinedInput-root": {
@@ -458,7 +466,7 @@ const AddContactForm = ({ open, onClose }) => {
 
 
                 <div style={{ display: "flex", justifyContent: "space-between", marginTop: "20px" }}>
-                    <Button onClick={handleClose} variant="contained" style={{ backgroundColor: "#1f3b57", color: "#fff" }}>
+                    <Button onClick={handleClose} variant="contained" style={{ backgroundColor: "#fff", color: "#1f3b57" }}>
                         Cancel
                     </Button>
                     <Button type="submit" variant="contained" style={{ backgroundColor: "#1f3b57", color: "#fff" }}>
