@@ -9,10 +9,17 @@ import EmailIcon from "@mui/icons-material/Email";
 import LanguageIcon from "@mui/icons-material/Language";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import ChatIcon from "@mui/icons-material/Chat";
+import Flag from "react-world-flags";
+
 
 const ContactView = ({ open, onClose }) => {
     const contact = useSelector(state => state.listOfContacts.thisContact);
-
+    const languageFlags = {
+        English: "gb",
+        French: "fr",
+        Spanish: "es",
+        Hebrew: "il",
+    };
     if (!contact) return null;
 
     return (
@@ -47,22 +54,30 @@ const ContactView = ({ open, onClose }) => {
             <Divider />
 
             <Box display="flex" alignItems="center" gap={1} my={1}>
-                <StarIcon color={contact.mainContact ? "warning" : "disabled"} fontSize="small" />
+                <StarIcon
+                    sx={{
+                        color: contact.mainContact ? "#2e5277" : "#b0b0b0", 
+                        fontSize: 20
+                    }}
+                />
                 <Typography variant="body2">Main Contact</Typography>
             </Box>
+
+
 
             <Divider sx={{ my: 1 }} />
 
             <Typography variant="caption" color="textSecondary">Preferred Language</Typography>
-            <Box display="flex" alignItems="center" gap={1}>
-                <LanguageIcon fontSize="small" />
+            <Box display="flex" alignItems="center" gap={1} mb={3}>
+                {contact.contactDetails?.preferredLanguage && languageFlags[contact.contactDetails.preferredLanguage] && (
+                    <Flag code={languageFlags[contact.contactDetails.preferredLanguage]} style={{ width: 20, height: 15 }} />
+                )}
                 <Typography fontSize={"0.9rem"} fontWeight="bold">{contact.contactDetails?.preferredLanguage || "Not specified"}</Typography>
             </Box>
-            {/* <Divider sx={{ my: 1 }} /> */}
 
             <Typography variant="caption" color="textSecondary">Phone</Typography>
             {contact.contactDetails?.phoneNumbers?.map((p, index) => (
-                <Box key={index} display="flex" alignItems="center" gap={1}>
+                <Box key={index} display="flex" alignItems="center" gap={1} mb={3}>
                     <Typography fontSize={"0.9rem"} fontWeight="bold">
                         {p.type} -
                         <Box component="span" sx={{ borderBottom: "1px solid black", display: "inline-block" }}>
@@ -97,11 +112,11 @@ const ContactView = ({ open, onClose }) => {
             {contact.billingInformation && contact.billingInformation !== "" ? (
                 <Box>
                     <Typography variant="caption" color="textSecondary">Name for Invoice</Typography>
-                    <Typography fontSize={"0.9rem"} fontWeight="bold">{contact.billingInformation.nameForInvoice || "N/A"}</Typography>
+                    <Typography fontSize={"0.9rem"} fontWeight="bold" mb={3}>{contact.billingInformation.nameForInvoice || "N/A"}</Typography>
                     {/* <Divider sx={{ my: 1 }} /> */}
 
-                    <Box display="flex" justifyContent="space-between">
-                        <Box>
+                    <Box display="flex" justifyContent="space-between" >
+                        <Box >
                             <Typography variant="caption" color="textSecondary">Accounting Ref</Typography>
                             <Typography fontSize={"0.9rem"} fontWeight="bold">{contact.billingInformation.accountingRef || "N/A"}</Typography>
                         </Box>

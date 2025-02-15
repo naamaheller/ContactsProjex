@@ -66,7 +66,7 @@ const ContactDetails = ({ contact }) => {
 
                 {/* דירוג ראשי */}
                 <TableCell align="center">
-                    <IconButton onClick={handleRatingChange} sx={{ color: "#ff9800" }}>
+                    <IconButton onClick={handleRatingChange} sx={{ color: "#2e5277" }}>
                         {rating ? <StarFilledIcon /> : <StarIcon />}
                     </IconButton>
                 </TableCell>

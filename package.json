@@ -19,7 +19,8 @@
     "react-country-flag": "^3.1.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.2",
-    "react-redux": "^9.2.0"
+    "react-redux": "^9.2.0",
+    "react-world-flags": "^1.6.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
