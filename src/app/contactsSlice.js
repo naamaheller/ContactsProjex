@@ -9,10 +9,8 @@ const initialState = {
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
-  //פעולות קיימות בslice
   reducers: {
     selectContact: (state, action) => {
-      //piload הוא 
       state.thisContact = action.payload;
     },
     updateContact: (state, action) => {

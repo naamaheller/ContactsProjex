@@ -1,5 +1,3 @@
-
-// ContactsTable.js
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import ContactDetails from "./ContactDetails";
@@ -7,15 +5,29 @@ import SearchIcon from "@mui/icons-material/Search";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import Button from "@mui/material/Button";
 import AddContactForm from "./AddContactForm";
+import FilterPopover from "./FilterPopover";
 
 const ContactsTable = ({ setOpen }) => {
     const contacts = useSelector(state => state.listOfContacts.arr);
     const [searchTerm, setSearchTerm] = useState("");
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [filteredContacts, setFilteredContacts] = useState(contacts);
 
-    const filteredContacts = contacts.filter(contact =>
-        `${contact.firstName} ${contact.lastName}`.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    // סינון אנשי קשר לפי חיפוש
+    const handleSearch = (e) => {
+        const term = e.target.value.toLowerCase();
+        setSearchTerm(term);
+        setFilteredContacts(
+            contacts.filter(contact =>
+                `${contact.firstName} ${contact.lastName}`.toLowerCase().includes(term)
+            )
+        );
+    };
+
+    // פתיחה וסגירה של הפופאבר
+    const handleFilterClick = (event) => setAnchorEl(event.currentTarget);
+    const handleFilterClose = () => setAnchorEl(null);
 
     return (
         <div style={{ backgroundColor: "#f8f9fc", padding: "20px", borderRadius: "10px" }}>
@@ -26,18 +38,19 @@ const ContactsTable = ({ setOpen }) => {
                 </Button>
             </div>
 
-            <div style={{ display: "flex", alignItems: "center", gap: "5px", color: "#2e5277", cursor: "pointer", marginBottom: "10px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "5px", color: "#2e5277", cursor: "pointer", marginBottom: "10px" }}
+                onClick={handleFilterClick}>
                 <FilterListIcon fontSize="small" />
                 <span style={{ fontSize: "14px", fontWeight: "bold" }}>Filter</span>
             </div>
-            
+
             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                 <div style={{ display: "flex", alignItems: "center", border: "1px solid #8ea2c0", borderRadius: "5px", padding: "5px 10px", backgroundColor: "#f8f9fc" }}>
                     <input
                         type="text"
                         placeholder="Search in contacts"
                         value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
+                        onChange={handleSearch}
                         style={{
                             border: "none",
                             outline: "none",
@@ -74,6 +87,14 @@ const ContactsTable = ({ setOpen }) => {
             </table>
 
             <AddContactForm open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
+
+            {/* פופאבר פילטר */}
+            <FilterPopover
+                anchorEl={anchorEl}
+                onClose={handleFilterClose}
+                setFilteredContacts={setFilteredContacts}
+                contacts={contacts}
+            />
         </div>
     );
 };

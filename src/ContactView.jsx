@@ -9,16 +9,17 @@ import EmailIcon from "@mui/icons-material/Email";
 import LanguageIcon from "@mui/icons-material/Language";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import ChatIcon from "@mui/icons-material/Chat";
-import Flag from "react-world-flags";
+import ReactCountryFlag from "react-country-flag";
 
 
 const ContactView = ({ open, onClose }) => {
     const contact = useSelector(state => state.listOfContacts.thisContact);
+
     const languageFlags = {
-        English: "gb",
-        French: "fr",
-        Spanish: "es",
-        Hebrew: "il",
+        English: "GB",
+        French: "FR",
+        Spanish: "ES",
+        Hebrew: "IL",
     };
     if (!contact) return null;
 
@@ -69,8 +70,17 @@ const ContactView = ({ open, onClose }) => {
 
             <Typography variant="caption" color="textSecondary">Preferred Language</Typography>
             <Box display="flex" alignItems="center" gap={1} mb={3}>
-                {contact.contactDetails?.preferredLanguage && languageFlags[contact.contactDetails.preferredLanguage] && (
-                    <Flag code={languageFlags[contact.contactDetails.preferredLanguage]} style={{ width: 20, height: 15 }} />
+            {contact.contactDetails?.preferredLanguage && languageFlags[contact.contactDetails.preferredLanguage] && (
+                    <ReactCountryFlag
+                        countryCode={languageFlags[contact.contactDetails.preferredLanguage]}
+                        svg
+                        style={{
+                            width: 20,
+                            height: 15,
+                            marginRight: "5px",
+                            borderRadius: "3px"
+                        }}
+                    />
                 )}
                 <Typography fontSize={"0.9rem"} fontWeight="bold">{contact.contactDetails?.preferredLanguage || "Not specified"}</Typography>
             </Box>

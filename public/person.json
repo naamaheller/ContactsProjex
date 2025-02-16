@@ -41,7 +41,7 @@
       "address": "Flat 3, HaShalom 45, Tel Aviv",
       "mainContact": false,
       "contactDetails": {
-        "preferredLanguage": "English",
+        "preferredLanguage": "French",
         "phoneNumbers": [
           {
             "number": "054-7896543",
@@ -98,7 +98,7 @@
       "firstName": "Liat",
       "lastName": "Rosen",
       "role": "Marketing Director",
-      "image": "",
+      "image": "4",
       "contactType": "Employee",
       "address": "Jaffa 15, Tel Aviv",
       "mainContact": false,
@@ -165,7 +165,7 @@
       "address": "Ben Gurion 30, Tel Aviv",
       "mainContact": false,
       "contactDetails": {
-        "preferredLanguage": "English",
+        "preferredLanguage": "Spanish",
         "phoneNumbers": [
           {
             "number": "052-2223333",
@@ -191,11 +191,12 @@
       "firstName": "Yaara",
       "lastName": "Amit",
       "role": "HR Manager",
+      "image": "7",
       "contactType": "Employee",
       "address": "Shalom 42, Tel Aviv",
       "mainContact": true,
       "contactDetails": {
-        "preferredLanguage": "Hebrew",
+        "preferredLanguage": "Spanish",
         "phoneNumbers": [
           {
             "number": "050-7891234",
@@ -226,7 +227,7 @@
       "address": "HaNeviim 19, Tel Aviv",
       "mainContact": true,
       "contactDetails": {
-        "preferredLanguage": "English",
+        "preferredLanguage": "French",
         "phoneNumbers": [
           {
             "number": "054-3216548",
@@ -252,6 +253,7 @@
       "firstName": "Tali",
       "lastName": "Goldstein",
       "role": "Operations Manager",
+      "image": "9",
       "contactType": "Employee",
       "address": "Dizengoff 72, Tel Aviv",
       "mainContact": true,

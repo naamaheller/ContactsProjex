@@ -204,7 +204,6 @@ const AddContactForm = ({ open, onClose }) => {
                     }}
                 >
                     <MenuItem value="contractor">Contractor</MenuItem>
-                    <MenuItem value="manager">Manager</MenuItem>
                     <MenuItem value="Employee">Employee</MenuItem>
                     <MenuItem value="Freelancer">Freelancer</MenuItem>
 
