@@ -14,7 +14,6 @@ import ReactCountryFlag from "react-country-flag";
 
 const ContactView = ({ open, onClose }) => {
     const contact = useSelector(state => state.listOfContacts.thisContact);
-
     const languageFlags = {
         English: "GB",
         French: "FR",
@@ -23,8 +22,10 @@ const ContactView = ({ open, onClose }) => {
     };
     if (!contact) return null;
 
+    const preferredLanguage = contact.contactDetails?.preferredLanguage || contact.preferredLanguage || "Not specified";
+
     return (
-        <Drawer anchor="right" open={open} onClose={onClose} PaperProps={{ sx: { width: "360px", padding: "30px", backgroundColor: "#f8f9fb",color:"#1f3b57" } }}>
+        <Drawer anchor="right" open={open} onClose={onClose} PaperProps={{ sx: { width: "360px", padding: "30px", backgroundColor: "#f8f9fb", color: "#1f3b57" } }}>
             <Box display="flex" justifyContent="space-between" alignItems="center">
                 <Typography variant="h6" fontWeight="bold" fontSize={"1rem"}>Contact Details</Typography>
                 <IconButton onClick={onClose}><CloseIcon /></IconButton>
@@ -57,7 +58,7 @@ const ContactView = ({ open, onClose }) => {
             <Box display="flex" alignItems="center" gap={1} my={1}>
                 <StarIcon
                     sx={{
-                        color: contact.mainContact ? "#2e5277" : "#b0b0b0", 
+                        color: contact.mainContact ? "#2e5277" : "#b0b0b0",
                         fontSize: 20
                     }}
                 />
@@ -70,9 +71,9 @@ const ContactView = ({ open, onClose }) => {
 
             <Typography variant="caption" color="textSecondary">Preferred Language</Typography>
             <Box display="flex" alignItems="center" gap={1} mb={3}>
-            {contact.contactDetails?.preferredLanguage && languageFlags[contact.contactDetails.preferredLanguage] && (
+                {contact.contactDetails?.preferredLanguage && languageFlags[contact.contactDetails.preferredLanguage] && (
                     <ReactCountryFlag
-                        countryCode={languageFlags[contact.contactDetails.preferredLanguage]}
+                        countryCode={languageFlags[preferredLanguage]}
                         svg
                         style={{
                             width: 20,

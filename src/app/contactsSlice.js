@@ -20,23 +20,22 @@ const contactsSlice = createSlice({
       }
     },
     addContact: (state, action) => {
-      const existContact = state.arr.find(item => item.id === action.payload.id)
-      if (!existContact)
-        state.arr.push(action.payload)
+      action.payload.id = (state.arr[state.arr.length - 1].id) + 1
+      state.arr.push(action.payload)
     },
     EnterDetails: (state, action) => {
       state.arr = action.payload;
+    },
+    updateUserMainContact: (state, action) => {
+      const { id, mainContact } = action.payload;
+      const contact = state.arr.find(c => c.id === id);
+      if (contact)
+        contact.mainContact = mainContact;
     }
-  },
-  updateUserMainContact: (state, action) => {
-    const { id, mainContact } = action.payload;
-    const contact = state.arr.find(c => c.id === id);
-    if (contact) contact.mainContact = mainContact;
-}
-
+  }
 });
 
 
-export const { selectContact, updateContact, addContact ,EnterDetails} = contactsSlice.actions;
+export const { selectContact, updateContact, addContact, EnterDetails, updateUserMainContact } = contactsSlice.actions;
 export default contactsSlice.reducer;
 

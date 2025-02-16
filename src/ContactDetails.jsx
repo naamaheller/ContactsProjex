@@ -13,6 +13,7 @@ import { TableRow, TableCell, Box } from "@mui/material";
 import StarIcon from "@mui/icons-material/StarBorder";
 import StarFilledIcon from "@mui/icons-material/Star";
 import ContactView from "./ContactView";
+import { updateUserMainContact } from "./app/contactsSlice";
 
 const ContactDetails = ({ contact }) => {
     const [rating, setRating] = useState(contact.mainContact ? 1 : 0);
