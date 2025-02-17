@@ -8,15 +8,25 @@ const FilterPopover = ({ anchorEl, onClose, setFilteredContacts, contacts }) => 
     const defaultFilters = {
         contactType: "All",
         tags: "All",
-        activeContact: "All",
+        activeContact: "All",  // Default value set to "All"
         mainContact: false
     };
 
     const [filters, setFilters] = useState(defaultFilters);
     const [pendingFilters, setPendingFilters] = useState(defaultFilters);
+    const [uniqueTags, setUniqueTags] = useState([]);
 
     useEffect(() => {
-        setFilteredContacts(contacts); // Show all contacts by default
+        setFilteredContacts(contacts); // Display all contacts by default
+
+        // Extract unique tags from contacts
+        const tagsSet = new Set();
+        contacts.forEach(contact => {
+            if (contact.tags) {
+                contact.tags.split(',').forEach(tag => tagsSet.add(tag.trim())); // Assuming tags are comma-separated in the JSON
+            }
+        });
+        setUniqueTags(Array.from(tagsSet));
     }, [contacts, setFilteredContacts]);
 
     const handleChange = (event) => {
@@ -35,10 +45,10 @@ const FilterPopover = ({ anchorEl, onClose, setFilteredContacts, contacts }) => 
             filtered = filtered.filter(contact => contact.contactType === pendingFilters.contactType);
         }
         if (pendingFilters.tags !== "All") {
-            filtered = filtered.filter(contact => contact.tags?.includes(pendingFilters.tags));
+            filtered = filtered.filter(contact => contact.tags?.split(',').map(tag => tag.trim()).includes(pendingFilters.tags));
         }
         if (pendingFilters.activeContact !== "All") {
-            filtered = filtered.filter(contact => String(contact.activeContact) === pendingFilters.activeContact);
+            filtered = filtered.filter(contact => contact.isActive === pendingFilters.activeContact); // Filter by active status
         }
         if (pendingFilters.mainContact) {
             filtered = filtered.filter(contact => contact.mainContact);
@@ -68,7 +78,7 @@ const FilterPopover = ({ anchorEl, onClose, setFilteredContacts, contacts }) => 
 
                 <Button variant="contained" size="small" onClick={() => setPendingFilters(defaultFilters)}
                     style={{ background: "#6c7a92", marginBottom: "15px", textTransform: "none", fontSize: "12px", borderRadius: "15px", padding: "5px 10px" }}>
-                    x Clear all
+                    x Clear All
                 </Button>
 
                 {["contactType", "tags", "activeContact"].map(field => (
@@ -82,10 +92,10 @@ const FilterPopover = ({ anchorEl, onClose, setFilteredContacts, contacts }) => 
                         <FormControl fullWidth>
                             <Select name={field} value={pendingFilters[field]} onChange={handleChange} size="small">
                                 <MenuItem value="All">All</MenuItem>
-                                {field === "contactType" && ["Contractor", "Employee","Freelancer"].map(type => (
+                                {field === "contactType" && ["Contractor", "Employee", "Freelancer"].map(type => (
                                     <MenuItem key={type} value={type}>{type}</MenuItem>
                                 ))}
-                                {field === "tags" && ["VIP", "Client", "Supplier"].map(tag => (
+                                {field === "tags" && uniqueTags.map(tag => (
                                     <MenuItem key={tag} value={tag}>{tag}</MenuItem>
                                 ))}
                                 {field === "activeContact" && ["true", "false"].map(status => (

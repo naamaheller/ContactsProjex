@@ -2,43 +2,45 @@
   "contacts": [
     {
       "id": 1,
+      "isActive": "true",
       "firstName": "John",
       "lastName": "Balingit",
       "role": "Manager",
       "image": "1",
       "contactType": "Contractor",
       "address": "Flat 1, Halapid 12, Petah Tikva",
+      "tags": "VIP",
       "mainContact": true,
       "contactDetails": {
-        "preferredLanguage": "Hebrew",
+        "preferredLanguage": "English",
         "phoneNumbers": [
-          {
-            "number": "052-54654614",
-            "type": "Work"
-          }
+          {"number": "052-54654614", "type": "Work"},
+          {"number": "03-5678901", "type": "Home"}
         ],
         "emails": [
-          {
-            "email": "john.balingit@ifd.co.il",
-            "type": "Private"
-          }
-        ]
+          {"email": "john.balingit@ifd.co.il", "type": "Private"},
+          {"email": "mikecohen@gmail.com", "type": "Private"}
+        ],
+        "country": "Israel"
       },
       "mailingAddress": "Halapid 9",
       "billingInformation": {
         "nameForInvoice": "John Balingit Ltd.",
         "accountingRef": "JBL12345",
         "VATNumber": "587974"
-      }
+
+        }
     },
-    {
+    { 
       "id": 2,
+      "isActive": "false",
       "firstName": "Michael",
       "lastName": "Cohen",
       "role": "Senior Engineer",
       "image": "2",
       "contactType": "Freelancer",
       "address": "Flat 3, HaShalom 45, Tel Aviv",
+      "tags": "Supplier",
       "mainContact": false,
       "contactDetails": {
         "preferredLanguage": "French",
@@ -64,12 +66,14 @@
     },
     {
       "id": 3,
+      "isActive": "false",
       "firstName": "Yoel",
       "lastName": "Levi",
       "role": "Project Manager",
       "image": "3",
       "contactType": "Employee",
       "address": "Floor 2, King George 10, Tel Aviv",
+      "tags": "Client",
       "mainContact": true,
       "contactDetails": {
         "preferredLanguage": "Hebrew",
@@ -95,12 +99,14 @@
     },
     {
       "id": 4,
+      "isActive": "true",
       "firstName": "Liat",
       "lastName": "Rosen",
       "role": "Marketing Director",
       "image": "4",
       "contactType": "Employee",
       "address": "Jaffa 15, Tel Aviv",
+      "tags": "Supplier",
       "mainContact": false,
       "contactDetails": {
         "preferredLanguage": "English",
@@ -126,12 +132,14 @@
     },
     {
       "id": 5,
+      "isActive": "false",
       "firstName": "Liron",
       "lastName": "Shalom",
       "role": "Software Developer",
       "image": "5",
       "contactType": "Employee",
       "address": "Herzl 24, Haifa",
+      "tags": "VIP",
       "mainContact": false,
       "contactDetails": {
         "preferredLanguage": "Hebrew",
@@ -157,12 +165,14 @@
     },
     {
       "id": 6,
+      "isActive": "true",
       "firstName": "Oren",
       "lastName": "Katz",
       "role": "UX Designer",
       "image": "6",
       "contactType": "Freelancer",
       "address": "Ben Gurion 30, Tel Aviv",
+      "tags": "Client",
       "mainContact": false,
       "contactDetails": {
         "preferredLanguage": "Spanish",
@@ -188,12 +198,14 @@
     },
     {
       "id": 7,
+      "isActive": "true",
       "firstName": "Yaara",
       "lastName": "Amit",
       "role": "HR Manager",
       "image": "7",
       "contactType": "Employee",
       "address": "Shalom 42, Tel Aviv",
+      "tags": "Supplier",
       "mainContact": true,
       "contactDetails": {
         "preferredLanguage": "Spanish",
@@ -219,12 +231,14 @@
     },
     {
       "id": 8,
+      "isActive": "true",
       "firstName": "Tomer",
       "lastName": "Ben David",
       "role": "Sales Manager",
       "image": "8",
       "contactType": "Employee",
       "address": "HaNeviim 19, Tel Aviv",
+      "tags": "Client",
       "mainContact": true,
       "contactDetails": {
         "preferredLanguage": "French",
@@ -250,12 +264,14 @@
     },
     {
       "id": 9,
+      "isActive": "false",
       "firstName": "Tali",
       "lastName": "Goldstein",
       "role": "Operations Manager",
       "image": "9",
       "contactType": "Employee",
       "address": "Dizengoff 72, Tel Aviv",
+      "tags": "Supplier",
       "mainContact": true,
       "contactDetails": {
         "preferredLanguage": "Hebrew",
@@ -281,12 +297,14 @@
     },
     {
       "id": 10,
+      "isActive": "true",
       "firstName": "Eli",
       "lastName": "Barak",
       "role": "IT Specialist",
       "image": "10",
       "contactType": "Contractor",
       "address": "Rothschild 100, Tel Aviv",
+      "tags": "VIP",
       "mainContact": false,
       "contactDetails": {
         "preferredLanguage": "English",
