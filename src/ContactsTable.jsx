@@ -6,7 +6,7 @@ import FilterListIcon from "@mui/icons-material/FilterList";
 import Button from "@mui/material/Button";
 import AddContactForm from "./AddContactForm";
 import FilterPopover from "./FilterPopover";
-import "./ContactsTable.css"; // הוספת קובץ ה-CSS
+import "./ContactsTable.css"; 
 
 const ContactsTable = ({ setOpen }) => {
     const contacts = useSelector(state => state.listOfContacts.arr);
@@ -57,6 +57,7 @@ const ContactsTable = ({ setOpen }) => {
                 <span className="contacts-count">{filteredContacts.length} Contacts</span>
             </div>
 
+            {/* טבלה עם גלילה מתחת לכותרת */}
             <div className="contacts-table-wrapper">
                 <table className="contacts-table">
                     <thead>

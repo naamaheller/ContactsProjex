@@ -92,12 +92,12 @@
 
 .contacts-table-wrapper {
     flex-grow: 1;
-    min-height: 800px;
-}
-
-.contacts-table {
-    width: 100%;
-    border-collapse: collapse;
+    max-height: 600px; /* גובה מקסימלי לטבלה */
+    overflow-y: auto; /* גלילה אנכית לנתונים */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-top: 20px; /* רווח בין הטבלה לחלק העליון */
+    position: relative;
 }
 
 .contacts-table thead {
@@ -105,9 +105,22 @@
     top: 0;
     background-color: #f8f9fc;
     z-index: 1000;
-    border-bottom: 10px solid #f8f9fc;
+    border-bottom: 1px solid #ccc;
 }
 
-.contacts-table th {
-    padding: 10px 20px;
+.contacts-table tbody {
+    display: block;
+    overflow-y: auto;
+    max-height: 500px; /* גובה קבוע לרשימת הנתונים */
+}
+
+.contacts-table thead,
+.contacts-table tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed; /* שמירה על פריסה תקינה */
+}
+
+.contacts-table tbody {
+    min-height: 400px; /* גובה מינימלי - מונע התכווצות אחרי חיפוש */
 }
