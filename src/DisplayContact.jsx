@@ -41,9 +41,9 @@ export const DisplayContact = ({ onClose, contact, setIsEdit }) => {
                     sx={{ width: 70, height: 70, margin: "auto" }}
                 />
                 {/* כפתור עריכה עם טקסט "Edit" */}
-                <IconButton 
-                    size="small" 
-                    onClick={() => setIsEdit(true)} 
+                <IconButton
+                    size="small"
+                    onClick={() => setIsEdit(true)}
                     sx={{ position: "absolute", top: 0, right: 0, color: "#1f3b57", display: "flex", alignItems: "center" }}
                 >
                     <EditIcon fontSize="small" />
@@ -126,11 +126,11 @@ export const DisplayContact = ({ onClose, contact, setIsEdit }) => {
             )}
 
             <Divider sx={{ my: 1 }} />
-            
+
             {/* כתובת */}
             <Typography variant="caption" color="textSecondary">Address</Typography>
             <Typography fontSize="0.9rem" fontWeight="bold">{contact.address || "No address available"}</Typography>
-            
+
             <Divider sx={{ my: 1 }} />
 
             {/* פרטי חשבונית */}

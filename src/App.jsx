@@ -13,7 +13,7 @@ function App() {
       .then(response => response.json())
       .then(data => {
         console.log("Fetched data:", data);
-        dispatch(EnterDetails(data.contacts)); // אם ה-JSON מכיל `contacts`
+        dispatch(EnterDetails(data.contacts));
       })
       .catch(error => console.log('Error fetching data:', error));
   }, []);

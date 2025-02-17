@@ -30,7 +30,7 @@ export const EditContact = ({ item, onClose, setIsEdit }) => {
     const [billingInfo, setBillingInfo] = useState(item.billingInformation || { nameForInvoice: "", accountingRef: "", VATNumber: "" });
 
     useEffect(() => {
-        if (item && !profileImage) { // אם יש פריט ולא נבחרה תמונה חדשה
+        if (item && !profileImage) {
             setProfileImage(item.image ? `/img/${item.image}.jpg` : null);
         }
     }, [item]);
@@ -93,7 +93,7 @@ export const EditContact = ({ item, onClose, setIsEdit }) => {
                 VATNumber: billingInfo.VATNumber,
             },
         };
-        formattedData.mainContact=item.mainContact;
+        formattedData.mainContact = item.mainContact;
 
         if (item.id) {
             dispatch(updateContact(formattedData));
@@ -152,7 +152,6 @@ export const EditContact = ({ item, onClose, setIsEdit }) => {
                             <TextField
                                 {...field}
                                 label="First Name"
-                                // value={item.firstName}
                                 fullWidth
                                 disabled
                                 sx={{
@@ -161,10 +160,10 @@ export const EditContact = ({ item, onClose, setIsEdit }) => {
                                         "&.Mui-focused fieldset": { borderColor: "#1f3b57" }
                                     },
                                     "& .MuiInputLabel-root": {
-                                        color: "#1f3b57" // צבע ברירת מחדל
+                                        color: "#1f3b57"
                                     },
                                     "& .MuiInputLabel-root.Mui-focused": {
-                                        color: "#1f3b57" // צבע הכותרת כשהאינפוט בפוקוס
+                                        color: "#1f3b57"
                                     }
                                 }}
                             />
@@ -178,7 +177,6 @@ export const EditContact = ({ item, onClose, setIsEdit }) => {
                                 {...field}
                                 label="Last Name"
                                 fullWidth
-                                // value={item.lastName}
                                 disabled
                                 sx={{
                                     backgroundColor: "#F5F8FA",
@@ -203,7 +201,6 @@ export const EditContact = ({ item, onClose, setIsEdit }) => {
                                 {...field}
                                 label="Role"
                                 fullWidth
-                                // value={item.role}
                                 disabled
                                 sx={{
                                     backgroundColor: "#F5F8FA",
@@ -234,7 +231,7 @@ export const EditContact = ({ item, onClose, setIsEdit }) => {
                                     Contact Type
                                 </InputLabel>
                                 <Select
-                                    {...field} // זה כבר כולל value ו־onChange
+                                    {...field}
                                     displayEmpty
                                     sx={{
                                         "&.Mui-focused .MuiOutlinedInput-notchedOutline": { borderColor: "#1f3b57" }
@@ -263,14 +260,12 @@ export const EditContact = ({ item, onClose, setIsEdit }) => {
                             <Controller
                                 name="preferredLanguage"
                                 control={control}
-                                // disabled
-                                
                                 render={({ field }) => (
                                     <>
                                         <Select
                                             {...field}
                                             fullWidth
-                                            inputProps={{ readOnly: true }} // מונע שינוי אך שומר את הערך
+                                            inputProps={{ readOnly: true }}
                                             sx={{
                                                 backgroundColor: "#F5F8FA",
                                                 "&.Mui-focused .MuiOutlinedInput-notchedOutline": { borderColor: "#1f3b57" }
@@ -292,15 +287,15 @@ export const EditContact = ({ item, onClose, setIsEdit }) => {
                         {item.contactDetails.phoneNumbers.map((phone, index) => (
                             <div key={phone.id || index} style={{ display: "flex", gap: "10px", alignItems: "center", marginBottom: "10px" }}>
                                 <TextField
-                                    defaultValue={phone.number}  // ערך ברירת מחדל שלא ניתן לערוך
+                                    defaultValue={phone.number}
                                     label="Phone"
                                     fullWidth
-                                    disabled  // מנוטרל לעריכה
+                                    disabled
                                     sx={{
                                         backgroundColor: "#F5F8FA",
                                         "& .MuiOutlinedInput-root": {
                                             "&.Mui-disabled fieldset": {
-                                                borderColor: "#b0b0b0"  // צבע המסגרת כאשר מנוטרל
+                                                borderColor: "#b0b0b0"
                                             }
                                         },
                                         "& .MuiInputLabel-root": {
@@ -312,7 +307,7 @@ export const EditContact = ({ item, onClose, setIsEdit }) => {
                                     defaultValue={phone.type}
                                     label="Type"
                                     fullWidth
-                                    disabled  // גם כאן מנוטרל לעריכה
+                                    disabled
                                     sx={{
                                         backgroundColor: "#F5F8FA",
                                         "& .MuiOutlinedInput-root": {
@@ -332,15 +327,15 @@ export const EditContact = ({ item, onClose, setIsEdit }) => {
                         {item.contactDetails.emails.map((email, index) => (
                             <div key={email.id || index} style={{ display: "flex", gap: "10px", alignItems: "center", marginBottom: "10px" }}>
                                 <TextField
-                                    defaultValue={email.email}  // הצגת כתובת האימייל
+                                    defaultValue={email.email}
                                     label="Email"
                                     fullWidth
-                                    disabled  // מנוטרל לעריכה
+                                    disabled
                                     sx={{
                                         backgroundColor: "#F5F8FA",
                                         "& .MuiOutlinedInput-root": {
                                             "&.Mui-disabled fieldset": {
-                                                borderColor: "#b0b0b0"  // צבע גבול כשהשדה מנוטרל
+                                                borderColor: "#b0b0b0"
                                             }
                                         },
                                         "& .MuiInputLabel-root": {
@@ -349,10 +344,10 @@ export const EditContact = ({ item, onClose, setIsEdit }) => {
                                     }}
                                 />
                                 <TextField
-                                    defaultValue={email.type}  // הצגת סוג האימייל
+                                    defaultValue={email.type}
                                     label="Type"
                                     fullWidth
-                                    disabled  // גם כאן מנוטרל לעריכה
+                                    disabled
                                     sx={{
                                         backgroundColor: "#F5F8FA",
                                         "& .MuiOutlinedInput-root": {
@@ -390,26 +385,10 @@ export const EditContact = ({ item, onClose, setIsEdit }) => {
                                         "& .MuiInputLabel-root": { color: "#1f3b57" },
                                         "& .MuiInputLabel-root.Mui-focused": { color: "#1f3b57" }
                                     }}
-                                    // value={item.mailingAddress}
                                     onChange={(e) => setMailingAddress({ ...mailingAddress, address: e.target.value })}
                                 />
                             </Grid>
-                            {/* <Grid item xs={12}>
-                                <TextField
-                                    label="Comment"
-                                    fullWidth
-                                    sx={{
-                                        backgroundColor: "#F5F8FA",
-                                        "& .MuiOutlinedInput-root": {
-                                            "&.Mui-focused fieldset": { borderColor: "#1f3b57" }
-                                        },
-                                        "& .MuiInputLabel-root": { color: "#1f3b57" },
-                                        "& .MuiInputLabel-root.Mui-focused": { color: "#1f3b57" }
-                                    }}
-                                    value={item.mailingAddress.comment}
-                                    onChange={(e) => setMailingAddress({ ...mailingAddress, comment: e.target.value })}
-                                />
-                            </Grid> */}
+
                         </Grid>
                     </AccordionDetails>
                 </Accordion>
@@ -433,7 +412,6 @@ export const EditContact = ({ item, onClose, setIsEdit }) => {
                                         "& .MuiInputLabel-root": { color: "#1f3b57" },
                                         "& .MuiInputLabel-root.Mui-focused": { color: "#1f3b57" }
                                     }}
-                                    // value={item.billingInformation.nameForInvoice}
                                     onChange={(e) => setBillingInfo({ ...billingInfo, invoiceName: e.target.value })}
                                 />
                             </Grid>
@@ -451,7 +429,6 @@ export const EditContact = ({ item, onClose, setIsEdit }) => {
                                         "& .MuiInputLabel-root": { color: "#1f3b57" },
                                         "& .MuiInputLabel-root.Mui-focused": { color: "#1f3b57" }
                                     }}
-                                    // value={item.billingInformation.accountingRef}
                                     onChange={(e) => setBillingInfo({ ...billingInfo, accountingRef: e.target.value })}
                                 />
                             </Grid>
@@ -468,7 +445,6 @@ export const EditContact = ({ item, onClose, setIsEdit }) => {
                                         "& .MuiInputLabel-root": { color: "#1f3b57" },
                                         "& .MuiInputLabel-root.Mui-focused": { color: "#1f3b57" }
                                     }}
-                                    // value={item.billingInformation.VATNumber}
                                     onChange={(e) => setBillingInfo({ ...billingInfo, vatNumber: e.target.value })}
                                 />
                             </Grid>
@@ -478,7 +454,7 @@ export const EditContact = ({ item, onClose, setIsEdit }) => {
 
 
                 <div style={{ display: "flex", justifyContent: "space-between", marginTop: "20px" }}>
-                    <Button onClick={()=>{ setIsEdit(false); onClose()}} variant="contained" style={{ backgroundColor: "#fff", color: "#1f3b57" }}>
+                    <Button onClick={() => { setIsEdit(false); onClose() }} variant="contained" style={{ backgroundColor: "#fff", color: "#1f3b57" }}>
                         Cancel
                     </Button>
                     <Button type="submit" variant="contained" style={{ backgroundColor: "#1f3b57", color: "#fff" }}>

@@ -17,21 +17,21 @@ const ContactView = ({ open, onClose }) => {
             PaperProps={{
                 sx: {
                     width: "440px",
-                    padding: "20px",  // שומר על כל הרווחים הפנימיים
+                    padding: "20px",
                     height: "100%",
                     backgroundColor: "#f8f9fb",
                     color: "#1f3b57",
                     boxSizing: "border-box",
-                    overflow: "hidden"  // מונע גלילה חיצונית
+                    overflow: "hidden"
                 }
             }}
         >
             <Box
                 sx={{
                     height: "100%",
-                    overflowY: "auto",  // גלילה אנכית
-                    paddingRight: "20px",  // שומר על הרווח הפנימי מימין לתוכן
-                    marginRight: "-20px",  // מזיז את הגלילה ימינה לקצה
+                    overflowY: "auto",
+                    paddingRight: "20px",
+                    marginRight: "-20px",
                     boxSizing: "content-box"
                 }}
             >

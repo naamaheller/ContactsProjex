@@ -12,13 +12,13 @@ const contactsSlice = createSlice({
   reducers: {
     selectContact: (state, action) => {
       state.thisContact = action.payload;
-    },updateContact: (state, action) => {
+    }, updateContact: (state, action) => {
       const index = state.arr.findIndex(c => c.id === action.payload.id);
-      console.log("Contact Index:", index);  // הוסף את זה כאן
+      console.log("Contact Index:", index);
       if (index !== -1) {
         state.arr[index] = JSON.parse(JSON.stringify(action.payload));
       }
-  },  
+    },
     addContact: (state, action) => {
       action.payload.id = (state.arr[state.arr.length - 1].id) + 1
       state.arr.push(action.payload)

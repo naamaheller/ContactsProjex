@@ -8,7 +8,7 @@ const FilterPopover = ({ anchorEl, onClose, setFilteredContacts, contacts }) => 
     const defaultFilters = {
         contactType: "All",
         tags: "All",
-        activeContact: "All",  // Default value set to "All"
+        activeContact: "All",
         mainContact: false
     };
 
@@ -17,13 +17,11 @@ const FilterPopover = ({ anchorEl, onClose, setFilteredContacts, contacts }) => 
     const [uniqueTags, setUniqueTags] = useState([]);
 
     useEffect(() => {
-        setFilteredContacts(contacts); // Display all contacts by default
-
-        // Extract unique tags from contacts
+        setFilteredContacts(contacts);
         const tagsSet = new Set();
         contacts.forEach(contact => {
             if (contact.tags) {
-                contact.tags.split(',').forEach(tag => tagsSet.add(tag.trim())); // Assuming tags are comma-separated in the JSON
+                contact.tags.split(',').forEach(tag => tagsSet.add(tag.trim()));
             }
         });
         setUniqueTags(Array.from(tagsSet));
@@ -48,7 +46,7 @@ const FilterPopover = ({ anchorEl, onClose, setFilteredContacts, contacts }) => 
             filtered = filtered.filter(contact => contact.tags?.split(',').map(tag => tag.trim()).includes(pendingFilters.tags));
         }
         if (pendingFilters.activeContact !== "All") {
-            filtered = filtered.filter(contact => contact.isActive === pendingFilters.activeContact); // Filter by active status
+            filtered = filtered.filter(contact => contact.isActive === pendingFilters.activeContact);
         }
         if (pendingFilters.mainContact) {
             filtered = filtered.filter(contact => contact.mainContact);

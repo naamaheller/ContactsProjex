@@ -6,6 +6,7 @@ import FilterListIcon from "@mui/icons-material/FilterList";
 import Button from "@mui/material/Button";
 import AddContactForm from "./AddContactForm";
 import FilterPopover from "./FilterPopover";
+import "./ContactsTable.css"; // הוספת קובץ ה-CSS
 
 const ContactsTable = ({ setOpen }) => {
     const contacts = useSelector(state => state.listOfContacts.arr);
@@ -14,7 +15,6 @@ const ContactsTable = ({ setOpen }) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [filteredContacts, setFilteredContacts] = useState(contacts);
 
-    // סינון אנשי קשר לפי חיפוש
     const handleSearch = (e) => {
         const term = e.target.value.toLowerCase();
         setSearchTerm(term);
@@ -25,70 +25,61 @@ const ContactsTable = ({ setOpen }) => {
         );
     };
 
-    // פתיחה וסגירה של הפופאבר
     const handleFilterClick = (event) => setAnchorEl(event.currentTarget);
     const handleFilterClose = () => setAnchorEl(null);
 
     return (
-        <div style={{ backgroundColor: "#f8f9fc", padding: "20px", borderRadius: "10px" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
-                <h2 style={{ margin: 0 }}>Contacts</h2>
-                <Button variant="contained" style={{ backgroundColor: "#1f3b57" }} onClick={() => setIsDrawerOpen(true)}>
+        <div className="contacts-container">
+            <div className="contacts-header">
+                <h2>Contacts</h2>
+                <Button variant="contained" className="add-contact-button" onClick={() => setIsDrawerOpen(true)}>
                     + New Contact
                 </Button>
             </div>
 
-            <div style={{ display: "flex", alignItems: "center", gap: "5px", color: "#2e5277", cursor: "pointer", marginBottom: "10px" }}
-                onClick={handleFilterClick}>
-                <FilterListIcon fontSize="small" />
-                <span style={{ fontSize: "14px", fontWeight: "bold" }}>Filter</span>
+            <div className="contacts-actions">
+                <div className="filter-button" onClick={handleFilterClick}>
+                    <FilterListIcon fontSize="small" />
+                    <span>Filter</span>
+                </div>
             </div>
 
-            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                <div style={{ display: "flex", alignItems: "center", border: "1px solid #8ea2c0", borderRadius: "5px", padding: "5px 10px", backgroundColor: "#f8f9fc" }}>
+            <div className="search-container">
+                <div className="search-box">
                     <input
                         type="text"
                         placeholder="Search in contacts"
                         value={searchTerm}
                         onChange={handleSearch}
-                        style={{
-                            border: "none",
-                            outline: "none",
-                            fontSize: "14px",
-                            flex: 1,
-                            color: "#2e5277",
-                            backgroundColor: "transparent"
-                        }}
                     />
-                    <SearchIcon style={{ color: "#2e5277" }} />
+                    <SearchIcon />
                 </div>
-                <span style={{ color: "#2e5277", fontWeight: "bold" }}>
-                    {filteredContacts.length} Contacts
-                </span>
+                <span className="contacts-count">{filteredContacts.length} Contacts</span>
             </div>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Contact Type</th>
-                        <th>Name</th>
-                        <th>Role</th>
-                        <th style={{ padding: "10px 20px" }}>Contact Details</th>
-                        <th style={{ padding: "10px 20px" }}>Main Contact</th>
-                        <th style={{ padding: "10px 20px" }}>...</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {filteredContacts.map((c) => (
-                        <ContactDetails key={c.id} contact={c} setOpen={setOpen} />
-                    ))}
-                </tbody>
-            </table>
+            <div className="contacts-table-wrapper">
+                <table className="contacts-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Contact Type</th>
+                            <th>Name</th>
+                            <th>Role</th>
+                            <th>Contact Details</th>
+                            <th>Main Contact</th>
+                            <th>...</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {filteredContacts.map((c) => (
+                            <ContactDetails key={c.id} contact={c} setOpen={setOpen} />
+                        ))}
+                    </tbody>
+                </table>
+            </div>
 
             <AddContactForm open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
 
-            {/* פופאבר פילטר */}
             <FilterPopover
                 anchorEl={anchorEl}
                 onClose={handleFilterClose}

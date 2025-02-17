@@ -38,8 +38,8 @@ const AddContactForm = ({ open, onClose }) => {
             firstName: "",
             lastName: "",
             role: "",
-            contactType: "Employee", // ברירת מחדל: עובד
-            preferredLanguage: "English", // ברירת מחדל: אנגלית
+            contactType: "Employee",
+            preferredLanguage: "English",
             phones: [{ number: "", type: "Personal" }],
             emails: [{ email: "", type: "Private" }],
         },
@@ -55,7 +55,7 @@ const AddContactForm = ({ open, onClose }) => {
         vatNumber: "",
     });
 
-    
+
     const { fields: phoneFields, append: addPhone, remove: removePhone } =
         useFieldArray({ control, name: "phones" });
     const { fields: emailFields, append: addEmail, remove: removeEmail } =
@@ -146,10 +146,10 @@ const AddContactForm = ({ open, onClose }) => {
                                         "&.Mui-focused fieldset": { borderColor: "#1f3b57" }
                                     },
                                     "& .MuiInputLabel-root": {
-                                        color: "#1f3b57" // צבע ברירת מחדל
+                                        color: "#1f3b57"
                                     },
                                     "& .MuiInputLabel-root.Mui-focused": {
-                                        color: "#1f3b57" // צבע הכותרת כשהאינפוט בפוקוס
+                                        color: "#1f3b57"
                                     }
                                 }}
                             />
