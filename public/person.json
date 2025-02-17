@@ -14,12 +14,24 @@
       "contactDetails": {
         "preferredLanguage": "English",
         "phoneNumbers": [
-          {"number": "052-54654614", "type": "Work"},
-          {"number": "03-5678901", "type": "Home"}
+          {
+            "number": "052-54654614",
+            "type": "Work"
+          },
+          {
+            "number": "03-5678901",
+            "type": "Home"
+          }
         ],
         "emails": [
-          {"email": "john.balingit@ifd.co.il", "type": "Private"},
-          {"email": "mikecohen@gmail.com", "type": "Private"}
+          {
+            "email": "john.balingit@ifd.co.il",
+            "type": "Private"
+          },
+          {
+            "email": "mikecohen@gmail.com",
+            "type": "Private"
+          }
         ],
         "country": "Israel"
       },
@@ -28,10 +40,9 @@
         "nameForInvoice": "John Balingit Ltd.",
         "accountingRef": "JBL12345",
         "VATNumber": "587974"
-
-        }
+      }
     },
-    { 
+    {
       "id": 2,
       "isActive": "false",
       "firstName": "Michael",

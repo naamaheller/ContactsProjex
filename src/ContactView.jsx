@@ -4,9 +4,15 @@ import { Drawer, Box } from "@mui/material";
 import { DisplayContact } from "./DisplayContact";
 import { EditContact } from "./EditContact";
 
+/**
+ * This component displays detailed contact information inside a side Drawer.
+ * It allows viewing or editing the contact details depending on the current state.
+ */
 const ContactView = ({ open, onClose }) => {
     const contact = useSelector(state => state.listOfContacts.thisContact);
+
     let [isEdit, setIsEdit] = useState(false);
+
     if (!contact) return null;
 
     return (
@@ -35,6 +41,7 @@ const ContactView = ({ open, onClose }) => {
                     boxSizing: "content-box"
                 }}
             >
+                {/* Displaying the contact or edit screen based on the state */}
                 {isEdit ? (
                     <EditContact item={contact} setIsEdit={setIsEdit} onClose={onClose} />
                 ) : (

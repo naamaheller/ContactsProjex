@@ -1,3 +1,8 @@
+/**
+ * Slice for managing contacts using Redux Toolkit.
+ * Contains a list of contacts, a selected contact, and actions for updating the data.
+ */
+
 import { createSlice } from '@reduxjs/toolkit';
 
 
@@ -12,9 +17,9 @@ const contactsSlice = createSlice({
   reducers: {
     selectContact: (state, action) => {
       state.thisContact = action.payload;
-    }, updateContact: (state, action) => {
+    },
+    updateContact: (state, action) => {
       const index = state.arr.findIndex(c => c.id === action.payload.id);
-      console.log("Contact Index:", index);
       if (index !== -1) {
         state.arr[index] = JSON.parse(JSON.stringify(action.payload));
       }

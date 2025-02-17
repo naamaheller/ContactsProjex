@@ -32,7 +32,12 @@ const languageOptions = [
     { value: "French", label: "French", flag: "FR" },
 ];
 
+/**
+ * This component displays a form for adding a new contact inside a side Drawer.
+ * It allows entering personal details, phone numbers, emails, address, billing information, and uploading a profile image.
+ */
 const AddContactForm = ({ open, onClose }) => {
+    // Setting up form handling with react-hook-form
     const { control, handleSubmit, reset, formState: { errors } } = useForm({
         defaultValues: {
             firstName: "",
@@ -45,25 +50,21 @@ const AddContactForm = ({ open, onClose }) => {
         },
     });
 
-    const [mailingAddress, setMailingAddress] = useState({
-        address: "",
-        comment: "",
-    });
-    const [billingInfo, setBillingInfo] = useState({
-        invoiceName: "",
-        accountingRef: "",
-        vatNumber: "",
-    });
-
+    const [mailingAddress, setMailingAddress] = useState({ address: "", comment: "" });
+    const [billingInfo, setBillingInfo] = useState({ invoiceName: "", accountingRef: "", vatNumber: "" });
 
     const { fields: phoneFields, append: addPhone, remove: removePhone } =
         useFieldArray({ control, name: "phones" });
     const { fields: emailFields, append: addEmail, remove: removeEmail } =
         useFieldArray({ control, name: "emails" });
+
     const [profileImage, setProfileImage] = useState(null);
 
     let dispatch = useDispatch();
 
+    /**
+     * Handles profile image upload and stores the URL for display.
+     */
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
         if (file) {
@@ -71,15 +72,20 @@ const AddContactForm = ({ open, onClose }) => {
         }
     };
 
+    /**
+     * Resets all form fields and closes the Drawer.
+     */
     const handleClose = () => {
-        reset(); // מאפס את כל השדות של react-hook-form
-        setProfileImage(null); // מאפס את תמונת הפרופיל
-        setMailingAddress({ address: "", comment: "" }); // מאפס את הכתובת
-        setBillingInfo({ invoiceName: "", accountingRef: "", vatNumber: "" }); // מאפס את הנתונים לחיוב
+        reset(); // Reset all fields using react-hook-form
+        setProfileImage(null);
+        setMailingAddress({ address: "", comment: "" });
+        setBillingInfo({ invoiceName: "", accountingRef: "", vatNumber: "" });
         onClose();
     };
 
-
+    /**
+     * Saves the new contact and dispatches it to the Redux store.
+     */
     const saveContact = (data) => {
         const formattedData = {
             ...data,
@@ -89,15 +95,15 @@ const AddContactForm = ({ open, onClose }) => {
                 phoneNumbers: data.phones.map(phone => ({ type: phone.type, number: phone.number })),
                 emails: data.emails.map(email => ({ type: email.type, email: email.email })),
             },
-            address: mailingAddress.address,
+            mailingAddress: mailingAddress.address,
             billingInformation: {
                 nameForInvoice: billingInfo.invoiceName,
                 accountingRef: billingInfo.accountingRef,
                 VATNumber: billingInfo.vatNumber,
             },
         };
-        dispatch(addContact(formattedData))
-        handleClose();
+        dispatch(addContact(formattedData)); // Dispatch data to Redux
+        handleClose(); // Close the form after saving
     };
 
     return (
@@ -113,7 +119,7 @@ const AddContactForm = ({ open, onClose }) => {
                     <CloseIcon />
                 </IconButton>
             </div>
-
+            {/* image  */}
             <div style={{ textAlign: "center", marginBottom: "15px", position: "relative" }}>
                 <input type="file" accept="image/*" onChange={handleImageUpload} style={{ display: "none" }} id="profile-upload" />
                 <label htmlFor="profile-upload">
@@ -127,10 +133,10 @@ const AddContactForm = ({ open, onClose }) => {
                     <EditIcon />
                 </IconButton>
             </div>
-
             <form onSubmit={handleSubmit(saveContact)}>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "15px", marginBottom: "15px" }}>
                     <Controller
+                        // firstName
                         name="firstName"
                         control={control}
                         rules={{ required: "First name is required" }}
@@ -156,6 +162,7 @@ const AddContactForm = ({ open, onClose }) => {
                         )}
                     />
                     <Controller
+                        // lastName 
                         name="lastName"
                         control={control}
                         rules={{ required: "Last name is required" }}
@@ -181,6 +188,7 @@ const AddContactForm = ({ open, onClose }) => {
                         )}
                     />
                     <Controller
+                        // role
                         name="role"
                         control={control}
                         rules={{ required: "Role is required" }}
@@ -207,6 +215,7 @@ const AddContactForm = ({ open, onClose }) => {
                         )}
                     />
                     <Controller
+                        // contactType
                         name="contactType"
                         control={control}
                         render={({ field }) => (
@@ -249,6 +258,7 @@ const AddContactForm = ({ open, onClose }) => {
                         <Grid item xs={12}>
                             <label htmlFor="preferredLanguage" style={{ color: "#1f3b57" }}>Preferred Language</label>
                             <Controller
+                                // preferredLanguage
                                 name="preferredLanguage"
                                 control={control}
                                 render={({ field }) => (
@@ -271,7 +281,7 @@ const AddContactForm = ({ open, onClose }) => {
                                 )}
                             />
                         </Grid>
-
+                        {/* phone- add/delete */}
                         <h4 style={{ color: "#1f3b57" }}>Phone</h4>
                         {phoneFields.map((item, index) => (
                             <div key={item.id} style={{ display: "flex", gap: "10px", alignItems: "center", marginBottom: "10px" }}>
@@ -328,7 +338,7 @@ const AddContactForm = ({ open, onClose }) => {
                         >
                             Add Phone
                         </Button>
-
+                        {/* email- add/delete */}
                         <h4 style={{ color: "#1f3b57" }}>Email</h4>
                         {emailFields.map((item, index) => (
                             <div key={item.id} style={{ display: "flex", gap: "10px", alignItems: "center", marginBottom: "10px" }}>
@@ -389,6 +399,7 @@ const AddContactForm = ({ open, onClose }) => {
                 </Accordion>
                 <Accordion>
                     <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                        {/* mailingAddress */}
                         <Typography variant="subtitle1" style={{ color: "#1f3b57" }}>Mailing Address</Typography>
                     </AccordionSummary>
                     <AccordionDetails>
@@ -487,7 +498,7 @@ const AddContactForm = ({ open, onClose }) => {
                     </AccordionDetails>
                 </Accordion>
 
-
+                {/* button- cancel/save */}
                 <div style={{ display: "flex", justifyContent: "space-between", marginTop: "20px" }}>
                     <Button onClick={handleClose} variant="contained" style={{ backgroundColor: "#fff", color: "#1f3b57" }}>
                         Cancel

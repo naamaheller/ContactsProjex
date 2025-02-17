@@ -1,3 +1,4 @@
+/* Container for the contacts section */
 .contacts-container {
     background-color: #f8f9fc;
     padding: 20px;
@@ -12,6 +13,7 @@
     overflow: hidden;
 }
 
+/* Header section with title and 'New Contact' button */
 .contacts-header {
     display: flex;
     justify-content: space-between;
@@ -24,6 +26,7 @@
     color: #1f3b57;
 }
 
+/* Styling for the 'New Contact' button */
 .add-contact-button {
     background-color: #1f3b57 !important;
     border-radius: 8px !important;
@@ -32,6 +35,7 @@
     text-transform: none !important;
 }
 
+/* Actions section (filter, search, etc.) */
 .contacts-actions {
     display: flex;
     align-items: center;
@@ -39,6 +43,7 @@
     margin-bottom: 10px;
 }
 
+/* Filter button styling */
 .filter-button {
     display: flex;
     align-items: center;
@@ -53,12 +58,14 @@
     color: #2e5277;
 }
 
+/* Search section */
 .search-container {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
+/* Search box design */
 .search-box {
     display: flex;
     align-items: center;
@@ -71,6 +78,7 @@
     flex: 0;
 }
 
+/* Search input field */
 .search-box input {
     border: none;
     outline: none;
@@ -80,26 +88,30 @@
     background-color: transparent;
 }
 
+/* Search icon */
 .search-box svg {
     color: #2e5277;
 }
 
+/* Displaying the number of contacts */
 .contacts-count {
     color: #2e5277;
     font-weight: bold;
     font-size: 14px;
 }
 
+/* Table wrapper with scroll */
 .contacts-table-wrapper {
     flex-grow: 1;
-    max-height: 600px; /* גובה מקסימלי לטבלה */
-    overflow-y: auto; /* גלילה אנכית לנתונים */
+    max-height: 600px; /* Maximum height for the table */
+    overflow-y: auto; /* Enables vertical scrolling */
     border: 1px solid #ccc;
     border-radius: 8px;
-    margin-top: 20px; /* רווח בין הטבלה לחלק העליון */
+    margin-top: 20px; /* Space between table and upper section */
     position: relative;
 }
 
+/* Table header */
 .contacts-table thead {
     position: sticky;
     top: 0;
@@ -108,19 +120,22 @@
     border-bottom: 1px solid #ccc;
 }
 
+/* Table body */
 .contacts-table tbody {
     display: block;
     overflow-y: auto;
-    max-height: 500px; /* גובה קבוע לרשימת הנתונים */
+    max-height: 500px; /* Fixed height for contact list */
 }
 
+/* Ensuring proper table layout */
 .contacts-table thead,
 .contacts-table tbody tr {
     display: table;
     width: 100%;
-    table-layout: fixed; /* שמירה על פריסה תקינה */
+    table-layout: fixed;
 }
 
+/* Prevents table shrinking after searching */
 .contacts-table tbody {
-    min-height: 400px; /* גובה מינימלי - מונע התכווצות אחרי חיפוש */
+    min-height: 400px;
 }

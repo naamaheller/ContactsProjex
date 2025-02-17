@@ -9,8 +9,12 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import ChatIcon from "@mui/icons-material/Chat";
 import ReactCountryFlag from "react-country-flag";
 
+/**
+ * This component displays detailed contact information.
+ * It includes an avatar, name, contact details, preferred language, and billing information.
+ */
 export const DisplayContact = ({ onClose, contact, setIsEdit }) => {
-    if (!contact) return null; // מונע שגיאות אם הנתונים לא נטענו עדיין
+    if (!contact) return null; // Prevents errors if data is not yet loaded
 
     const languageFlags = {
         English: "GB",
@@ -23,7 +27,7 @@ export const DisplayContact = ({ onClose, contact, setIsEdit }) => {
 
     return (
         <>
-            {/* כותרת עם כפתור סגירה */}
+            {/* Header with close button */}
             <Box display="flex" justifyContent="space-between" alignItems="center">
                 <Typography variant="h6" fontWeight="bold" fontSize="1rem">
                     Contact Details
@@ -33,14 +37,14 @@ export const DisplayContact = ({ onClose, contact, setIsEdit }) => {
                 </IconButton>
             </Box>
 
-            {/* תמונת פרופיל וכפתור עריכה */}
+            {/* Profile picture and edit button */}
             <Box position="relative" textAlign="center" my={1}>
                 <Avatar
                     src={contact.image ? `/img/${contact.image}.jpg` : "/img/default.jpg"}
                     onError={(e) => (e.target.src = "/img/default.jpg")}
                     sx={{ width: 70, height: 70, margin: "auto" }}
                 />
-                {/* כפתור עריכה עם טקסט "Edit" */}
+                {/* Edit button with "Edit" text */}
                 <IconButton
                     size="small"
                     onClick={() => setIsEdit(true)}
@@ -53,8 +57,19 @@ export const DisplayContact = ({ onClose, contact, setIsEdit }) => {
                     {contact.firstName} {contact.lastName}
                 </Typography>
             </Box>
+            <Typography
+                variant="body1"
+                sx={{
+                    color: "#1f3b57",
+                    backgroundColor: "#F5F8FA",
+                    padding: "10px",
+                    borderRadius: "5px"
+                }}
+            >
+                {contact.address}
+            </Typography>
 
-            {/* פרטי תפקיד וסוג קשר */}
+            {/* Role and contact type */}
             <Box display="flex" justifyContent="space-around" my={1}>
                 <Box textAlign="center">
                     <Typography variant="caption" color="textSecondary">Role</Typography>
@@ -67,14 +82,14 @@ export const DisplayContact = ({ onClose, contact, setIsEdit }) => {
             </Box>
             <Divider />
 
-            {/* איש קשר ראשי */}
+            {/* Main contact indicator */}
             <Box display="flex" alignItems="center" gap={1} my={1}>
                 <StarIcon sx={{ color: contact.mainContact ? "#2e5277" : "#b0b0b0", fontSize: 20 }} />
                 <Typography variant="body2">Main Contact</Typography>
             </Box>
             <Divider sx={{ my: 1 }} />
 
-            {/* שפה מועדפת */}
+            {/* Preferred language */}
             <Typography variant="caption" color="textSecondary">Preferred Language</Typography>
             <Box display="flex" alignItems="center" gap={1} mb={3}>
                 {languageFlags[preferredLanguage] && (
@@ -87,7 +102,7 @@ export const DisplayContact = ({ onClose, contact, setIsEdit }) => {
                 <Typography fontSize="0.9rem" fontWeight="bold">{preferredLanguage}</Typography>
             </Box>
 
-            {/* טלפונים */}
+            {/* Phone numbers */}
             <Typography variant="caption" color="textSecondary">Phone</Typography>
             {contact.contactDetails?.phoneNumbers?.length > 0 ? (
                 contact.contactDetails.phoneNumbers.map((p, index) => (
@@ -107,7 +122,7 @@ export const DisplayContact = ({ onClose, contact, setIsEdit }) => {
                 <Typography>No phone numbers available</Typography>
             )}
 
-            {/* אימיילים */}
+            {/* Emails */}
             <Typography variant="caption" color="textSecondary">Email</Typography>
             {contact.contactDetails?.emails?.length > 0 ? (
                 contact.contactDetails.emails.map((e, index) => (
@@ -127,13 +142,13 @@ export const DisplayContact = ({ onClose, contact, setIsEdit }) => {
 
             <Divider sx={{ my: 1 }} />
 
-            {/* כתובת */}
+            {/* Address */}
             <Typography variant="caption" color="textSecondary">Address</Typography>
-            <Typography fontSize="0.9rem" fontWeight="bold">{contact.address || "No address available"}</Typography>
+            <Typography fontSize="0.9rem" fontWeight="bold">{contact.mailingAddress || "No address available"}</Typography>
 
             <Divider sx={{ my: 1 }} />
 
-            {/* פרטי חשבונית */}
+            {/* Billing information */}
             {contact.billingInformation && contact.billingInformation !== "" ? (
                 <Box>
                     <Typography variant="caption" color="textSecondary">Name for Invoice</Typography>

@@ -1,3 +1,5 @@
+// `FilterPopover` component - Popover menu for filtering contacts.
+
 import React, { useState, useEffect } from "react";
 import { Popover, Button, Switch, FormControl, Select, MenuItem, IconButton, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
@@ -17,6 +19,7 @@ const FilterPopover = ({ anchorEl, onClose, setFilteredContacts, contacts }) => 
     const [uniqueTags, setUniqueTags] = useState([]);
 
     useEffect(() => {
+        // Load a list of unique tags from the contacts
         setFilteredContacts(contacts);
         const tagsSet = new Set();
         contacts.forEach(contact => {
@@ -27,15 +30,23 @@ const FilterPopover = ({ anchorEl, onClose, setFilteredContacts, contacts }) => 
         setUniqueTags(Array.from(tagsSet));
     }, [contacts, setFilteredContacts]);
 
+    /**
+     * Update state when a filter value changes.
+     */
     const handleChange = (event) => {
-        const { name, value } = event.target;
-        setPendingFilters(prev => ({ ...prev, [name]: value }));
+        setPendingFilters(prev => ({ ...prev, [event.target.name]: event.target.value }));
     };
 
+    /**
+     * Update state for filtering main contacts.
+     */
     const handleSwitchChange = (event) => {
         setPendingFilters(prev => ({ ...prev, mainContact: event.target.checked }));
     };
 
+    /**
+     * Apply the filters and update the contact list.
+     */
     const applyFilters = () => {
         let filtered = contacts;
 
@@ -46,7 +57,7 @@ const FilterPopover = ({ anchorEl, onClose, setFilteredContacts, contacts }) => 
             filtered = filtered.filter(contact => contact.tags?.split(',').map(tag => tag.trim()).includes(pendingFilters.tags));
         }
         if (pendingFilters.activeContact !== "All") {
-            filtered = filtered.filter(contact => contact.isActive === pendingFilters.activeContact);
+            filtered = filtered.filter(contact => contact.isActive === (pendingFilters.activeContact === "true"));
         }
         if (pendingFilters.mainContact) {
             filtered = filtered.filter(contact => contact.mainContact);
@@ -54,6 +65,14 @@ const FilterPopover = ({ anchorEl, onClose, setFilteredContacts, contacts }) => 
 
         setFilters(pendingFilters);
         setFilteredContacts(filtered);
+        handleClose();
+    };
+
+    /**
+     * Close the popover.
+     */
+    const handleClose = () => {
+        document.activeElement?.blur();
         onClose();
     };
 
@@ -61,7 +80,8 @@ const FilterPopover = ({ anchorEl, onClose, setFilteredContacts, contacts }) => 
         <Popover
             open={open}
             anchorEl={anchorEl}
-            onClose={onClose}
+            onClose={handleClose}
+            disableAutoFocus
             anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
             transformOrigin={{ vertical: "top", horizontal: "left" }}
             sx={{ marginTop: "5px" }}
@@ -69,7 +89,7 @@ const FilterPopover = ({ anchorEl, onClose, setFilteredContacts, contacts }) => 
             <div style={{ width: "300px", padding: "20px", fontFamily: "Arial", color: "#1f3b57" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "10px" }}>
                     <Typography variant="h6" fontWeight="bold">Filter</Typography>
-                    <IconButton onClick={onClose} size="small">
+                    <IconButton onClick={handleClose} size="small">
                         <CloseIcon />
                     </IconButton>
                 </div>
@@ -113,7 +133,7 @@ const FilterPopover = ({ anchorEl, onClose, setFilteredContacts, contacts }) => 
                 </div>
 
                 <div style={{ display: "flex", justifyContent: "space-between", marginTop: "20px" }}>
-                    <Button onClick={onClose} style={{ color: "#6c7a92", textTransform: "none", fontSize: "14px" }}>
+                    <Button onClick={handleClose} style={{ color: "#6c7a92", textTransform: "none", fontSize: "14px" }}>
                         Cancel
                     </Button>
                     <Button variant="contained" onClick={applyFilters} style={{ background: "#1f3b57", textTransform: "none", fontSize: "14px", padding: "5px 15px" }}>
